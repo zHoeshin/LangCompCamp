@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Language Comparison Website</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/x-icon" href="icon.ico">
+    </head>
+    <body>
+        <script src="  https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
+        <script src="index.js"></script>
+        
+        <div class="header">
+            <img src="icon.ico" alt="" id="icon">
+            <input type="text" id="search" placeholder="Search...">
+        </div>
+        <div class="contents">
+            <div class="languagelist">
+                <!--div class="language">
+                    <h5>Lang1</h5>
+                    <p>Short description of lang1</p>
+                    <div class="tags">
+                        <div>Functional</div>
+                        <div>Compiled</div>
+                        <div>In-development</div>
+                    </div>
+                </div>
+                <div class="language">
+                    <h5>Lang2</h5>
+                    <p>Description of lang2</p>
+                    <div class="tags">
+                        <div>Compiled</div>
+
+                    </div>
+                </div>
+                <div class="language">
+                    <h5>Lang3</h5>
+                    <p>Slightly longer short description of lang3 which spands across multiple lines because there is a lot to talk about the language to catch the eye of the user</p>
+                    <div class="tags">
+                        <div>In-development</div>
+                        <div>Compiled</div>
+                        <div>Object-oriented</div>
+                    </div>
+                </div>
+                <div class="language">
+                    <h5>Lang4</h5>
+                    <p>Description of lang4</p>
+                    <div class="tags">
+                        <div>Functional</div>
+                        <div>Interpretered</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                        <div>Tag</div>
+                    </div>
+                </div>
+                <div class="language">
+                    <h5>Lang5</h5>
+                    <p>Description of lang5</p>
+                    <div class="tags">
+                        <div>Interpretered</div>
+                        <div>Object-oriented</div>
+                    </div>
+                </div-->
+            </div>
+
+            <div class="languageview" style="display: none">
+                <!--div onclick="switchToList()" style="cursor: pointer;">< Go Back</div>
+                <h1>Language name</h1>
+                <div id="description"></div>
+                <script>
+                    var converter = new showdown.Converter(),
+                    text      = "\n### Markdown!\n\n-# hopefully **everything** works\n\nshoundnt have _any_ problems\n\n$math a + b$"
+                    html      = converter.makeHtml(text);
+                    document.querySelector("div#markdown").innerHTML = html
+                </script>
+                <div class="tags">
+                    <div>Functional</div>
+                    <div>In-Development</div>
+                    <div>Interpretered</div>
+                    <div>Esolang</div>
+                </div>
+
+                <h2>Syntax Overview</h2>
+                <div class="syntax">
+                    <h3>Various</h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>{ ... } or [ ... ] or ( ... )</th>
+                                <th>Block</th>
+                            </tr>
+                            <tr>
+                                <th># ...</th>
+                                <th>Comment</th>
+                            </tr>
+                            <tr>
+                                <th>#- ... -#</th>
+                                <th>Multiline comment (nested)</th>
+                            </tr>
+                            <tr>
+                                <th>#- ... -#</th>
+                                <th>Documentation comment</th>
+                            </tr>
+                            <tr>
+                                <th>[\p{L}_\-][\p{L}\p{N}_\-]+</th>
+                                <th>Identifier regex</th>
+                            </tr>
+                            <tr>
+                                <th>Sensitive</th>
+                                <th>Case-sensitivity</th>
+                            </tr>
+                            <tr>
+                                <th>CamelCase</th>
+                                <th>Standart capitalization rules</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>General operators</h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>=</th>
+                                <th>Assignment</th>
+                            </tr>
+                            <tr>
+                                <th>delete</th>
+                                <th>Deletion</th>
+                            </tr>
+                            <tr>
+                                <th>+</th>
+                                <th>Addition</th>
+                            </tr>
+                            <tr>
+                                <th>-</th>
+                                <th>Substraction</th>
+                            </tr>
+                            <tr>
+                                <th>*</th>
+                                <th>Multiplication</th>
+                            </tr>
+                            <tr>
+                                <th>/</th>
+                                <th>Division</th>
+                            </tr>
+                            <tr>
+                                <th>^</th>
+                                <th>Exponentiation</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div-->
+            </div>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

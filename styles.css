@@ -1,0 +1,114 @@
+body, :root {
+    background-color: black;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(245, 255, 232);
+}
+
+div.header {
+    position: absolute;
+    height: 5em;
+    background-color: #3d0050;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+div.contents {
+    margin-top: 5em;
+    height: calc(100% - 5em);
+    background-color: rgb(24, 0, 46);
+
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+img#icon {
+    height: 4em; width: 4em;
+    margin: 0.4em;
+}
+
+input#search {
+    margin: 1em;
+    height: 2em;
+    width: 100%;
+    border-radius: 0.5em;
+    background-color: rgb(20, 0, 22);
+    color: rgb(255, 227, 227);
+    border-color: #19001a;
+}
+
+div.language {
+    margin: 0.4em;
+    cursor: pointer;
+}
+div.language > h5 {
+    padding-left: 1em;
+    margin: 0.2em;
+    padding-top: 1em;
+    font-size: medium
+}
+div.language > p {
+    padding-left: 0.5em;
+    margin: 0.2em;
+}
+div.language > div.tags, div.languageview > div.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+div.tags > div {
+    background-color: #86e986;
+    height: 1.4em;
+    border-radius: 0.7em;
+    margin: 0.2em;
+    padding: 0.3em;
+    padding-bottom: 0.1em;
+    text-align: center;
+    text-justify: center;
+    color: rgb(39, 0, 0);
+}
+
+div.languageview {
+
+}
+div.languageview > h1 {
+    padding-left: 1em;
+    padding-top: 0.5em;
+    margin-top: 0;
+    font-size: xx-large;
+}
+div.languageview > h2 {
+    padding-left: 1.2em;
+}
+/*div.languageview > p { */
+p { 
+    padding-left: 1em;
+    font-size: normal;
+}
+div.languageview > div.tags {
+    padding-left: 1em;
+}
+div.syntax {
+    padding-left: 1.5em;
+}
+div.syntax > table {
+    margin-left: 2em;
+    text-align: left;
+    border: 1px solid white;
+}
+div.syntax > table > tbody > tr {
+    border: 1px solid blue;
+}
+div.syntax > table > tbody > tr > th {
+    border: 1px solid white;
+    padding-left: 0.2em;
+    padding: 0.4em;
+}
+div.syntax > h3 {
+    text-transform: capitalize;
+}
