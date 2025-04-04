@@ -7,6 +7,8 @@ body, :root {
 
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(245, 255, 232);
+
+    --left: 20px;
 }
 
 div.header {
@@ -48,16 +50,17 @@ div.language {
     cursor: pointer;
 }
 div.language > h5 {
-    padding-left: 1em;
+    padding-left: var(--left);
     margin: 0.2em;
-    padding-top: 1em;
+    padding-top: 1.5em;
     font-size: medium
 }
 div.language > p {
-    padding-left: 0.5em;
+    padding-left: var(--left);
     margin: 0.2em;
 }
 div.language > div.tags, div.languageview > div.tags {
+    padding-left: var(--left);
     display: flex;
     flex-wrap: wrap;
 }
@@ -77,27 +80,27 @@ div.languageview {
 
 }
 div.languageview > h1 {
-    padding-left: 1em;
+    padding-left: var(--left);
     padding-top: 0.5em;
     margin-top: 0;
     font-size: xx-large;
 }
 div.languageview > h2 {
-    padding-left: 1.2em;
+    padding-left: var(--left);
 }
 /*div.languageview > p { */
 p { 
-    padding-left: 1em;
+    padding-left: var(--left);
     font-size: normal;
 }
 div.languageview > div.tags {
-    padding-left: 1em;
+    padding-left: var(--left);
 }
 div.syntax {
-    padding-left: 1.5em;
+    padding-left: var(--left);
 }
 div.syntax > table {
-    margin-left: 2em;
+    margin-left: var(--left);
     text-align: left;
     border: 1px solid white;
 }

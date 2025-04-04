@@ -12,7 +12,11 @@ function getFile(file) {
 
 function getLanguageList(file = "languages.json") {
     console.warn("Loaded language list")
-    return JSON.parse(getFile(DBURL + file))
+    let v = JSON.parse(getFile(DBURL + file))
+    for (let l of v) {
+        l.tagsnormalized = l.tags.map((t) => t.toLowerCase().replace(" ", "-"))
+    }
+    return v
 }
 
 let LANGUAGESLOADED = {}
@@ -22,6 +26,7 @@ function getLanguage(languageid) {
         console.warn(`Loaded ${languageid}`)
         let v = JSON.parse(getFile(DBURL + "languages/" + languageid + ".json"))
         LANGUAGESLOADED[languageid] = v
+        //LANGUAGESLOADED[languageid].tagsnormalized = v.tags.map((t) => t.toLowerCase().replace(" ", "-"))
         return v
     }) ()
 }
@@ -151,39 +156,54 @@ function querySearch(query = "") {
     query = query.replace(NEGTAGREGEX, "")
     const tags = Array.from(query.matchAll(TAGREGEX)).map(s => s[0].slice(1).toLowerCase())
     query = query.replace(TAGREGEX, "")
+    let all = query.trim() == ""
     query += "  "
 
-    const fuse = new Fuse(LANGUAGES, {
-        keys: ["author", "description", "name", "tags"],
-        threshold: 0.3
-    })
-    const results = fuse.search(query)
-    const yes = results.map(l => l.item.id)
-    const no = LANGUAGES.filter(l => !yes.includes(l.id)).map(l => l.id)
+    let yes = Object.keys(LANGUAGESBYID)
+    let no = []
+    if(!all){
+        const fuse = new Fuse(LANGUAGES, {
+            keys: ["author", "description", "name", "tags"],
+            threshold: 0.3
+        })
+        const results = fuse.search(query)
+        yes = results.map(l => l.item.id)
+        no = LANGUAGES.filter(l => !yes.includes(l.id)).map(l => l.id)
+    }
     yes:
     for (l in yes) {
         if (yes[l] === undefined) continue
-        for(const tag of LANGUAGES[l].tags) {
+        let T = LANGUAGES[l].tagsnormalized
+        if (negtags.some((t) => T.includes(t))) {
+            document.querySelector(`div#${yes[l]}`).style.display = "none"
+        }
+        else if (!tags.every((t) => T.includes(t))) {
+            document.querySelector(`div#${yes[l]}`).style.display = "none"
+        }
+        /*for(const tag of LANGUAGES[l].tags) {
             if(negtags.length > 0 && negtags.includes(tag.toLowerCase().replace(" ", "-"))) {
-                document.querySelector(`div#${yes[l]}`).style.display = "none"
                 continue yes
             }
             if(tags.length > 0 && !tags.includes(tag.toLowerCase().replace(" ", "-"))) {
                 document.querySelector(`div#${yes[l]}`).style.display = "none"
                 continue yes
             }
-        }
-        document.querySelector(`div#${yes[l]}`).style.display = ""
+        }*/
+        else document.querySelector(`div#${yes[l]}`).style.display = ""
     }
     no:
     for (l in no) {
         if (no[l] === undefined) continue
-        for(const tag of LANGUAGES[l].tags) {
+        let T = LANGUAGES[l].tagsnormalized
+        if (tags.every((t) => T.includes(t))) {
+            document.querySelector(`div#${yes[l]}`).style.display = ""
+        }
+        /*for(const tag of LANGUAGES[l].tags) {
             if(tags.length > 0 && tags.includes(tag.toLowerCase().replace(" ", "-"))) {
                 document.querySelector(`div#${no[l]}`).style.display = ""
                 continue no
             }
-        }
-        document.querySelector(`div#${no[l]}`).style.display = "none"
+        }*/
+        else document.querySelector(`div#${no[l]}`).style.display = "none"
     }
 }
