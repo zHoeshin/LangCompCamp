@@ -24,10 +24,13 @@ div.header {
 div.contents {
     margin-top: 5em;
     height: calc(100% - 5em);
-    background-color: rgb(24, 0, 46);
+    background-color: #18002e;
 
     overflow: scroll;
-    overflow-x: hidden;
+    overflow-x: auto;
+    
+    scrollbar-color: #f5ffe8 #18002e;
+    scrollbar-width: thin;
 }
 
 img#icon {
