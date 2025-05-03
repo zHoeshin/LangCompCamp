@@ -8,7 +8,7 @@ An example of such database can be found on [here](https://github.com/zHoeshin/l
 
 ## Language file
 The file is in form
-```json
+```
 lang = {
   "description": string,
   "features": {string->featurelist}
