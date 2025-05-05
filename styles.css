@@ -153,3 +153,7 @@ th > *, td > *, pre > *
     margin: 0;
     padding: 0;
 }
+
+button#theme { 
+    padding-right: 1em;
+}
