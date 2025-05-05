@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "description": {
+            "type": "string"
+        },
+        "features": {
+            "allOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "required": [
+        "description"
+    ]
+}
