@@ -1,5 +1,5 @@
 # LangCompCamp
-Accessible on [GithubPages](https://zhoeshin.github.io/).
+Accessible on [GithubPages](https://zhoeshin.github.io/LangCompCamp).
 A simple tool to load a database containing programming language syntax overviev from a github repo.
 You can use any github repo for the database: for this use url param db, ie `https://zhoeshin.github.io/?db=link.to.your/repo/`
 Normally the link would be `https://zhoeshin.github.io/?db=https://github.com/{username}/{reponame}/blob/main/`
