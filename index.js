@@ -1,4 +1,4 @@
-let DBURL = ""
+let DBURL = "zHoeshin/langcompcampdb"
 
 const MDConverter = new showdown.Converter()
 MDConverter.convert = MDConverter.makeHtml
@@ -12,7 +12,7 @@ function getFile(file) {
 
 function getLanguageList(file = "languages.json") {
     console.warn("Loaded language list")
-    let v = JSON.parse(getFile(DBURL + file))
+    let v = JSON.parse(getFile("https://raw.githubusercontent.com/" + DBURL + "/refs/heads/main/" + file))
     for (let l of v) {
         l.tagsnormalized = l.tags.map((t) => t.toLowerCase().replace(" ", "-"))
     }
@@ -24,7 +24,7 @@ let LANGUAGESLOADED = {}
 function getLanguage(languageid) {
     return LANGUAGESLOADED[languageid] ?? (() => {
         console.warn(`Loaded ${languageid}`)
-        let v = JSON.parse(getFile(DBURL + "languages/" + languageid + ".json"))
+        let v = JSON.parse(getFile("https://raw.githubusercontent.com/" + DBURL + "/refs/heads/main/" + "languages/" + languageid + ".json"))
         LANGUAGESLOADED[languageid] = v
         //LANGUAGESLOADED[languageid].tagsnormalized = v.tags.map((t) => t.toLowerCase().replace(" ", "-"))
         return v
@@ -32,7 +32,7 @@ function getLanguage(languageid) {
 }
 
 function makeLanguageShort(language) {
-    return `<div class="language" id="${language.id}" onclick="showLanguage('${language.id}')">
+    return `<div class="language" id="${language.id}" onclick="showLanguage('${language.id}')" onauxclick="window.open('https://github.com/zHoeshin/LangCompCamp','_blank')">
                 <h5>${language.name}</h5>
                 <p>${language.description}</p>
                 <div class="tags">
@@ -88,16 +88,57 @@ function createLanguagesInList() {
 }
 
 function makeTable(name, section) {
-    return `<h3>${name}</h3>
+    let t = `<h3>${name}</h3>
             <table>
-                <tbody>
-                    ${section.map((feature) => `<tr>
-                        <th><code>${feature.code ?? ""}</code></th>
-                        <th>${feature.description ?? ""}</th>
-                        <th><code>${feature.example ?? ""}</code></th>
-                    </tr>`).join("")}
-                </tbody>
+                <tbody>`
+
+    let things = ["code", "description", "example"]
+    let wrappers = {
+        "code": ["`", "`"],
+        "example": ["`", "`"]
+    }
+    for(const feature of section) {
+        let type = feature.type ?? "entry"
+        switch(type) {
+            case "entry":
+                let tmp = `<tr>`
+                for(const thing of things) {
+                    if ((feature[thing] ?? "") == "") {
+                        tmp += `<td></td>`
+                        continue
+                    }
+                    tmp += `<td><pre>${MDConverter.convert((wrappers[thing]??["",""])[0] + (feature[thing] ?? "") + (wrappers[thing]??["",""])[1])}</pre></td>`
+                }
+                tmp += `</tr>`
+                t += tmp
+                break
+            case "wrapper":
+                wrappers[feature.id ?? ""] = [feature.before ?? "", feature.after ?? ""]
+                break
+            case "column":
+                let remove = feature.remove ?? false
+                if (remove) things.remove(feature.id ?? "")
+                else things.push(feature.id ?? "")
+                break
+            case "header":
+                let _tmp = `<tr>`
+                for(const thing of things) {
+                    _tmp += `<th><pre>${MDConverter.convert(feature[thing] ?? "")}</pre></th>`
+                }
+                _tmp += `</tr>`
+                t += _tmp
+                break
+        }
+    }
+                    //{section.map((feature) => `<tr>
+                    //    <th><code>${feature.code ?? ""}</code></th>
+                    //    <th>${feature.description ?? ""}</th>
+                    //    <th><code>${feature.example ?? ""}</code></th>
+                    //</tr>`).join("")}
+    t +=   `</tbody>
             </table>`
+
+    return t
 }
 function makeTablesForall(sections) {
     return Object.keys(sections).map((name) => makeTable(name, sections[name])).join(" ")

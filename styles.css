@@ -6,7 +6,7 @@ body, :root {
     position: absolute;
 
     font-family: Arial, Helvetica, sans-serif;
-    color: rgb(245, 255, 232);
+    color: #f5ffe8;
 
     --left: 20px;
 }
@@ -40,12 +40,33 @@ img#icon {
 
 input#search {
     margin: 1em;
+    margin-right: 0.1em;
     height: 2em;
     width: 100%;
     border-radius: 0.5em;
-    background-color: rgb(20, 0, 22);
+    background-color: #140016;
     color: rgb(255, 227, 227);
     border-color: #19001a;
+}
+.header > button {
+    margin: 1em;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    padding: 1px;
+    border-width: 2px;
+    height: calc(2em + 6px);
+    min-width: calc(2em + 6px);
+    width: fit-content;
+    display: inline-block;
+    border-radius: 0.5em;
+    background-color: #140016;
+    color: rgb(255, 227, 227);
+    border-color: #19001a;
+}
+.header > button > img {
+    width: 1.6em;
+    height: 1.6em;
+    margin: 0.2em;
 }
 
 div.language {
@@ -80,7 +101,7 @@ div.tags > div {
 }
 
 div.languageview {
-
+    /**/
 }
 div.languageview > h1 {
     padding-left: var(--left);
@@ -106,15 +127,29 @@ div.syntax > table {
     margin-left: var(--left);
     text-align: left;
     border: 1px solid white;
+    border-spacing: 0;
 }
 div.syntax > table > tbody > tr {
     border: 1px solid blue;
 }
 div.syntax > table > tbody > tr > th {
-    border: 1px solid white;
+    border-top: 0.5px solid white;
+    border-left: 0.5px solid white;
+    padding-left: 0.2em;
+    padding: 0.4em;
+}
+div.syntax > table > tbody > tr > td {
+    border-top: 0.5px solid white;
+    border-left: 0.5px solid white;
     padding-left: 0.2em;
     padding: 0.4em;
 }
 div.syntax > h3 {
     text-transform: capitalize;
+}
+
+th > *, td > *, pre > *
+{
+    margin: 0;
+    padding: 0;
 }
