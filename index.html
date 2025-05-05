@@ -14,6 +14,8 @@
         <link rel="icon" type="image/x-icon" href="favicon.ico">
     </head>
     <body>
+        <link rel="stylesheet" href="themes/midnight.css" id="theme">
+
         <script src="  https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
         <script src="index.js"></script>
@@ -23,7 +25,8 @@
             <input type="text" id="search" placeholder="Search...">
             <button id="compare" style="display: none;">Compare    </button>
             <button id="dbgithub" onclick="window.open('https://github.com/' + DBURL,'_blank')"><img src="favicon.ico" style="filter: saturate(0) contrast(4) brightness(2);"></button>
-            <button id="githug" onclick="window.open('https://github.com/zHoeshin/LangCompCamp','_blank')"><img src="github-mark-white.svg"></button>
+            <button id="github" onclick="window.open('https://github.com/zHoeshin/LangCompCamp','_blank')"><img src="github-mark-white.svg"></button>
+            <button id="theme" onclick="rotateTheme()">Theme    </button>
         </div>
         <div class="contents">
             <div class="languagelist">

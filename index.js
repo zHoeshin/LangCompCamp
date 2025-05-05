@@ -52,7 +52,18 @@ let LANGUAGELIST
 let LOADEDPAGES = {}
 let URLPARAMS
 
+const themer = document.querySelector("link#theme")
+const themes = ["midnight", "wheat", "dark"]
+let themeid = localStorage.getItem("theme") ?? 0
+themer.href = `themes/${themes[themeid]}.css`
+function rotateTheme() {
+    themeid = (themeid + 1)%themes.length
+    themer.href = `themes/${themes[themeid]}.css`
+    localStorage.setItem("theme", themeid)
+}
 window.onload = (e) => {
+    
+
     URLPARAMS = new URLSearchParams(window.location.search)
     let db = URLPARAMS.get("db")
     if (db !== null) {
