@@ -5,18 +5,24 @@ You can use any github repo for the database: for this use url param db, ie `htt
 Normally the link would be `https://zhoeshin.github.io/?db=https://github.com/{username}/{reponame}/blob/main/`
 An example of such database can be found on [here](https://github.com/zHoeshin/langcompcampdb)([link to the website with using this example db](https://zhoeshin.github.io/LangCompCamp/?db=zHoeshin%2Flangcompcampdb))
 
-
-## Language file
+## How to contribute?
+1. Go to the database github repo you want to contribute to, for example https://github.com/zHoeshin/langcompcampdb
+2. Add your language into the `language.json` in the database. languages.json stores an array of `{"name": string, "id": string, "author": string, "description": string, "tags": array[string]}`
+3. Add your language file into the `languages/` folder. The file must be named `<language-id>.json` where `language-id` is the id you specified for your language in the `languages.json`
+4. ### Language file
 The file is in form
 ```
 lang = {
   "description": string,
-  "features": {string->featurelist}
+  "features": dict[string -> featurelist]
 }
+```
+where
+```
 featurelist = [feature]
 feature = {"type": string = "entry", ...}
 ```
-### Features
+#### Features
 Currently there are  types of features:
 - entry
   - appends a row into the table, each column is a field in the feature
@@ -29,5 +35,5 @@ Currently there are  types of features:
   - for example ``{"type": "wrapper", "id": "usage", "before": "#`", "after": "`"}`` would turn field `"usage": "print(arg)"` into ``"#`print(arg)"`` and when MD-converted it turns into a header with code
 
 
-### Features IDs
+#### Features IDs
 In the future there migth be a page consisting of the comparison of ALL the languages every uploaded, so to keep it clean some most common features(general syntax, operators, string manipulation, classes, etc) will have "id" field in the feature. The field is for the entry type features and is opotional
