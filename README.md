@@ -6,6 +6,9 @@ Normally the link would be `https://zhoeshin.github.io/?db=https://github.com/{u
 An example of such database can be found on [here](https://github.com/zHoeshin/langcompcampdb)([link to the website with using this example db](https://zhoeshin.github.io/LangCompCamp/?db=zHoeshin%2Flangcompcampdb))
 
 ## How to contribute?
+Schemas:
+- Languages list: https://github.com/zHoeshin/LangCompCamp/blob/main/languages-schema
+- Individual language files: https://github.com/zHoeshin/LangCompCamp/blob/main/language-schema
 1. Go to the database github repo you want to contribute to, for example https://github.com/zHoeshin/langcompcampdb
 2. Add your language into the `language.json` in the database. languages.json stores an array of `{"name": string, "id": string, "author": string, "description": string, "tags": array[string]}`
 3. Add your language file into the `languages/` folder. The file must be named `<language-id>.json` where `language-id` is the id you specified for your language in the `languages.json`
