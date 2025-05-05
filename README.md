@@ -19,14 +19,14 @@ feature = {"type": string = "entry", ...}
 ### Features
 Currently there are  types of features:
 - entry
--   appends a row into the table, each column is a field in the feature
+  - appends a row into the table, each column is a field in the feature
 - header
--   same as entry but bold
+  - same as entry but bold
 - column
--   takes field `id` and optional field `remove` defaulted to false. if `remove` is true, removes a column, otherwise adds. this only affects features after, does not affect features before
+  - takes field `id` and optional field `remove` defaulted to false. if `remove` is true, removes a column, otherwise adds. this only affects features after, does not affect features before
 - wrapper
--   takes field `id` and two optional fields `before` and `after`, both defaulted to empty string. before an entry's field is MD-converted, adds the fields as prefix and postfix respectively to the string
--   for example ``{"type": "wrapper", "id": "usage", "before": "#`", "after": "`"}`` would turn field `"usage": "print(arg)"` into ``"#`print(arg)"`` and when MD-converted it turns into a header with code
+  - takes field `id` and two optional fields `before` and `after`, both defaulted to empty string. before an entry's field is MD-converted, adds the fields as prefix and postfix respectively to the string
+  - for example ``{"type": "wrapper", "id": "usage", "before": "#`", "after": "`"}`` would turn field `"usage": "print(arg)"` into ``"#`print(arg)"`` and when MD-converted it turns into a header with code
 
 
 ### Features IDs
